@@ -1,0 +1,18 @@
+.input {
+  padding: 3px 4px;
+  background: var(----colors-interface-blue);
+  border: 1px solid #141414;
+  border-radius: var(--common-border-radius);
+}
+
+input:focus {
+  border: 1px solid var(--colors-interface-blue);
+  outline: none;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

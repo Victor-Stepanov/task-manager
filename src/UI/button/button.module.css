@@ -1,0 +1,10 @@
+.button {
+    box-sizing: var(--common-border-radius);
+    background-color: var(--colors-interface-blue);
+    padding: 10px;
+    text-align: center;
+    border: 1px solid ;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--colors-interface-white);
+}

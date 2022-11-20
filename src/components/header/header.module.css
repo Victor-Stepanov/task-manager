@@ -1,0 +1,14 @@
+.header {
+  padding: 20px;
+  max-width: 1440px;
+  width: 100%;
+  background-color: var(--colors-interface-dark-blue);
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1440px;
+  min-width: 1280px;
+}
