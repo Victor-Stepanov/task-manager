@@ -6,9 +6,11 @@ export const Header = () => {
   return (
     <header className={style.header}>
       <menu className={style.menu}>
-        <NavLink>Задачи</NavLink>
-        <NavLink>Лого</NavLink>
-        <NavLink>Профиль</NavLink>
+        <NavLink className={style.menuLink} to='/'>
+          Задачи
+        </NavLink>
+        <NavLink className={style.menuLink}>Лого</NavLink>
+        <NavLink className={style.menuLink}>Профиль</NavLink>
       </menu>
     </header>
   );

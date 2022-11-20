@@ -4,10 +4,10 @@
   --colors-interface-dark-blue: #112d4e;
   --colors-interface-blue: #3f72af;
   --colors-interface-soft: #dbe2ef;
-  --colors-interface-white: #f9f7f7;
-  --colors-interface-grey: #7b7b7b;
+  --colors-interface-white: #e5e5e5;
+  --colors-interface-grey: #4f4f4f;
 
-  --backround: var(--colors-interface-blue);
+  --backround: var(--colors-interface-soft);
 
   --common-border-radius: 5px;
 }
@@ -16,7 +16,7 @@
   margin: 0;
   font-weight: 700;
   font-style: normal;
-  color: var(--colors-interface-dark-blue);
+  color: var(--colors-interface-grey);
 }
 
 .text_type_main-small {
@@ -44,24 +44,24 @@
   font-size: 40px;
   line-height: 46px;
   font-weight: 400;
+  color: var(--colors-interface-dark-blue);
 }
 
-
-.pt-12px{
+.pt-12px {
   padding-top: 12px;
 }
 
-.pl-12px{
+.pl-12px {
   padding-left: 12px;
 }
-.pb-12px{
+.pb-12px {
   padding-bottom: 12px;
 }
 
-.pr-12px{
+.pr-12px {
   padding-right: 12px;
 }
 
-.pr-6px{
+.pr-6px {
   padding-right: 6px;
 }
