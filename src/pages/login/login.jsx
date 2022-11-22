@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { sendLoginData } from '../../features/slices/userSlice';
 import useForm from '../../hooks/useForm';
-import Button from '../../UI/button/button';
-import Input from '../../UI/input/input';
+import Button from '../../ui/button/button';
+import Input from '../../ui/input/input';
 import style from './login.module.css';
 
 export const LoginPage = () => {
@@ -13,11 +14,14 @@ export const LoginPage = () => {
   });
   const dispatch = useDispatch();
 
-  const userLogin = useCallback(e => {
-    e.preventDefault();
-    //dispatch
-    console.log(values);
-  });
+  const userLogin = useCallback(
+    e => {
+      e.preventDefault();
+      dispatch(sendLoginData(values));
+    },
+    [dispatch, values]
+  );
+
   return (
     <div className={style.container}>
       <h2 className='text text_type_main-large'>Вход</h2>
@@ -28,7 +32,7 @@ export const LoginPage = () => {
             placeholder='username'
             onChange={handleChange}
             value={values.name}
-            name='username'
+            name={'username'}
           />
         </div>
         <div className='pb-12px'>
@@ -37,7 +41,7 @@ export const LoginPage = () => {
             placeholder='password'
             onChange={handleChange}
             value={values.name}
-            name='password'
+            name={'password'}
           />
         </div>
         <Button className='text text_type_main-default'>Войти</Button>

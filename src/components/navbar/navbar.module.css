@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  min-height: 450px;
+  height: 100%;
+  background-color: var(--colors-interface-soft);
+  border-right: 1px solid #f1f1f1;
+  padding: 60px 20px;
+}
+.listTodo {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+   gap: 10px;
+}
+
+.listItem{
+  max-width: 200px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid white;
+  
+
+}
+
+.btn{
+  width: 10px;
+  height: 10px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link-active{
+  background-color: white;
+}

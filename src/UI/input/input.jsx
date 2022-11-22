@@ -1,20 +1,20 @@
-import React from 'react';
+import cn from 'classnames';
+import React, { forwardRef } from 'react';
 import style from './input.module.css';
 
-const Input = ({ value, onChange }) => {
+const Input = forwardRef(({ className, error, ...props }, ref) => {
   return (
     <div className={style.field}>
-      <label className={style.label}>{value}</label>
+      <label className={style.label}></label>
       <input
-        value={value}
-        onChange={onChange}
-        placeholder='input'
-        autoComplete='off'
-        className={style.input}
-        type='text'
+        className={cn(style.input, {
+          [style.error]: error,
+        })}
+        ref={ref}
+        {...props}
       />
     </div>
   );
-};
+});
 
 export default Input;

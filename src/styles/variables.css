@@ -4,10 +4,10 @@
   --colors-interface-dark-blue: #112d4e;
   --colors-interface-blue: #3f72af;
   --colors-interface-soft: #dbe2ef;
-  --colors-interface-white: #e5e5e5;
+  --colors-interface-white: #f4f6f8;
   --colors-interface-grey: #4f4f4f;
 
-  --backround: var(--colors-interface-soft);
+  --backround: var(--colors-interface-white);
 
   --common-border-radius: 5px;
 }
