@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { config } from '../../utils/const';
-import { setCookie } from '../../utils/utils';
+import { getCookie, setCookie } from '../../utils/utils';
 
 export const sendUserData = createAsyncThunk(
   'user/sendUserData',
@@ -51,6 +51,31 @@ export const sendLoginData = createAsyncThunk(
   }
 );
 
+export const getUserInfo = createAsyncThunk(
+  'user/getUserInfo',
+  async function (_, { rejectWithValue }) {
+    try {
+      const responce = await fetch(
+        `${config.baseUrl}/accounts/profile/my_profile/`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + getCookie('token'),
+          },
+        }
+      );
+      if (!responce.ok) {
+        throw new Error('An error occurred while receiving user data');
+      }
+      const data = await responce.json();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const initialState = {
   registerRequest: false,
   registerSuccess: false,
@@ -61,6 +86,10 @@ const initialState = {
   loginRequest: false,
   loginSuccess: false,
   loginFailed: false,
+
+  userRequest: false,
+  userSuccess: false,
+  userFailed: false,
 };
 
 const userSlice = createSlice({
@@ -91,8 +120,26 @@ const userSlice = createSlice({
       state.user = user;
     });
     builder.addCase(sendLoginData.rejected, state => {
+      state.loginRequest = false;
+      state.loginSuccess = false;
       state.loginFailed = true;
-    })
+    });
+    builder.addCase(getUserInfo.pending, state => {
+      state.userRequest = true;
+      state.userSuccess = false;
+      state.userFailed = false;
+    });
+    builder.addCase(getUserInfo.fulfilled, (state, action) => {
+      state.userRequest = false;
+      state.userSuccess = true;
+      state.userFailed = false;
+      state.user = action.payload;
+    });
+    builder.addCase(getUserInfo.rejected, state => {
+      state.userRequest = false;
+      state.userSuccess = false;
+      state.userFailed = true;
+    });
   },
 });
 

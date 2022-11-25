@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { deleteListData } from '../../features/slices/listSlice';
@@ -65,16 +65,13 @@ function ListItem({ item }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [taskId, setTaskId] = useState(null);
-  const [path, setPath] = useState(null);
 
   const goTask = id => {
     navigate(`task/${id}`);
     setTaskId(id);
   };
 
-  useEffect(() => {
-    setPath(location.pathname.split('task/')[1]);
-  }, [location, path]);
+  const path = location.pathname.split('task/')[1];
 
   return (
     <li
