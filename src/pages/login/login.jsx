@@ -37,14 +37,16 @@ export const LoginPage = () => {
         </div>
         <div className='pb-12px'>
           <Input
-            type='text'
+            type='password'
             placeholder='password'
             onChange={handleChange}
             value={values.name}
             name={'password'}
           />
         </div>
-        <Button className='text text_type_main-default'>Войти</Button>
+        <Button appearance={'primary'} extraClass='text text_type_main-default'>
+          Войти
+        </Button>
       </form>
       <p className='pt-12px text text_type_main-small'>
         Вы — новый пользователь?

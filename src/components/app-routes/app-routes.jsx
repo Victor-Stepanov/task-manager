@@ -6,7 +6,7 @@ import { Task } from '../task/task';
 const AppRoutes = () => {
   const location = useLocation();
   const background = location.state && location.state.background;
-  
+
   return (
     <div>
       <Routes location={background || location}>

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { json } from 'react-router-dom';
 import { config } from '../../utils/const';
 import { getCookie } from '../../utils/utils';
 
@@ -57,7 +56,7 @@ export const deleteListData = createAsyncThunk(
   async function (id, { rejectWithValue }) {
     console.log(id);
     try {
-      const responce = await fetch(`${config.baseUrl}/todo/lists/${id}`, {
+      const responce = await fetch(`${config.baseUrl}/todo/lists/${id}/`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -102,17 +101,24 @@ const listSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(sendListData.pending, state => {
       state.listCreateRequest = true;
+      state.listCreateSuccess = false;
+      state.listCreateFailed = false;
     });
     builder.addCase(sendListData.fulfilled, (state, action) => {
       state.listCreateRequest = false;
       state.listCreateSuccess = true;
+      state.listCreateFailed = false;
       state.list.push(action.payload);
     });
     builder.addCase(sendListData.rejected, state => {
       state.listCreateFailed = true;
+      state.listCreateRequest = false;
+      state.listCreateSuccess = false;
     });
     builder.addCase(fetchListData.pending, state => {
       state.fetchRequest = true;
+      state.fetchSuccess = false;
+      state.fetchFailed = false;
     });
     builder.addCase(fetchListData.fulfilled, (state, action) => {
       state.fetchRequest = false;
@@ -122,17 +128,24 @@ const listSlice = createSlice({
     });
     builder.addCase(fetchListData.rejected, state => {
       state.fetchFailed = true;
+      state.fetchRequest = false;
+      state.fetchSuccess = false;
     });
     builder.addCase(deleteListData.pending, state => {
       state.deleteRequest = true;
+      state.deleteSuccess = false;
+      state.deleteFailed = false;
     });
     builder.addCase(deleteListData.fulfilled, (state, action) => {
       state.deleteRequest = false;
       state.deleteSuccess = true;
+      state.deleteFailed = false;
       state.list = state.list.filter(item => item.id !== action.payload.id);
     });
     builder.addCase(deleteListData.rejected, state => {
+      state.deleteRequest = false;
       state.deleteFailed = true;
+      state.deleteSuccess = false;
     });
   },
 });

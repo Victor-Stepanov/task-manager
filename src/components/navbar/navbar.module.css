@@ -9,35 +9,41 @@
   border-right: 1px solid #f1f1f1;
   padding: 60px 20px;
 }
+
+.listBox {
+  display: flex;
+  justify-content: center;
+}
+
 .listTodo {
   margin: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
-   gap: 10px;
+  gap: 5px;
 }
 
-.listItem{
+.addList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem {
   max-width: 200px;
+  max-height: 40px;
   padding: 10px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
-  border: 1px solid white;
-  
-
+  border: 1px solid black;
 }
-
-.btn{
-  width: 10px;
-  height: 10px;
+.listItem:hover {
+  opacity: 0.2;
 }
-
-.link {
-  text-decoration: none;
-}
-
-.link-active{
-  background-color: white;
+.active {
+  background: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  border: none;
 }

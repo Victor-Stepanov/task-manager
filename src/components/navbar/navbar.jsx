@@ -1,43 +1,51 @@
-import React from 'react';
+import cn from 'classnames';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
-import { deleteListData, sendListData } from '../../features/slices/listSlice';
-import useForm from '../../hooks/useForm';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { deleteListData } from '../../features/slices/listSlice';
 import Button from '../../ui/button/button';
+import DeleteIcon from '../../ui/icons/delete-icon';
+import ListIcon from '../../ui/icons/list-icon';
+import { ListForm } from '../form/list-form';
+import Modal from '../modal/modal';
 import style from './navbar.module.css';
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   const { list } = useSelector(store => store.listData);
+  const [modal, setModal] = useState(false);
 
-  const { values, handleChange } = useForm({
-    name: '',
-  });
-
-  const handleAddList = event => {
-    event.preventDefault();
-    dispatch(sendListData(values));
+  const handleOpenModal = () => {
+    setModal(true);
   };
 
-  const setActive = ({ isActive }) => (isActive ? 'link-active' : 'link');
+  const handleCloseModal = () => {
+    setModal(false);
+  };
+
+  const navigate = useNavigate();
+
+  const goHome = () => navigate('/');
+
   return (
     <div className={style.container}>
       <nav>
-        <h3 className='text'>Список задач</h3>
+        <div className={style.listBox} onClick={goHome}>
+          <ListIcon />
+          <h3 className='text text_type_title-default'>Список задач</h3>
+        </div>
         <div className='pt-12px pb-12px'>
-          <input
-            type='text'
-            value={values.name}
-            name={'name'}
-            onChange={handleChange}
-          />
-          <Button onClick={handleAddList}>add</Button>
+          <Button appearance={'zero'} onClick={handleOpenModal}>
+            <span className='text text_type_main-small'>Создать список</span>
+          </Button>
+          {modal && (
+            <Modal onClose={handleCloseModal}>
+              <ListForm onClose={handleCloseModal} />
+            </Modal>
+          )}
         </div>
         <ul className={style.listTodo}>
           {list.length ? (
-            list.map(item => (
-              <ListItem key={item.id} name={item.name} id={item.id} />
-            ))
+            list.map(item => <ListItem key={item.id} item={item} />)
           ) : (
             <p>Add item</p>
           )}
@@ -47,27 +55,45 @@ const Navbar = () => {
   );
 };
 
-function ListItem({ name, id }) {
+function ListItem({ item }) {
   const dispatch = useDispatch();
 
   const handleDeleteList = id => {
     dispatch(deleteListData(id));
   };
 
+  const navigate = useNavigate();
   const location = useLocation();
+  const [taskId, setTaskId] = useState(null);
+  const [path, setPath] = useState(null);
+
+  const goTask = id => {
+    navigate(`task/${id}`);
+    setTaskId(id);
+  };
+
+  useEffect(() => {
+    setPath(location.pathname.split('task/')[1]);
+  }, [location, path]);
 
   return (
-    <Link
-      to={{
-        pathname:`task/${id}`,
-        state: { background: location },
+    <li
+      className={cn(style.listItem, {
+        [style.active]: path === String(taskId),
+      })}
+      onClick={() => {
+        goTask(item.id);
       }}
     >
-      <li className={` ${style.listItem}`}>
-        <p className='text'>{name}</p>
-        <Button onClick={() => handleDeleteList(id)}>del</Button>
-      </li>
-    </Link>
+      <p className='text text_type_main-small'>{item.name}</p>
+      <Button
+        disabled={path === String(taskId)}
+        appearance={'ghost'}
+        onClick={() => handleDeleteList(item.id)}
+      >
+        <DeleteIcon />
+      </Button>
+    </li>
   );
 }
 

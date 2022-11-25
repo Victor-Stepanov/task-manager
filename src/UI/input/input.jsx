@@ -1,20 +1,16 @@
 import cn from 'classnames';
-import React, { forwardRef } from 'react';
+import React from 'react';
 import style from './input.module.css';
 
-const Input = forwardRef(({ className, error, ...props }, ref) => {
+const Input = ({ type, size, extraClass, ...props }) => {
+  const className = cn(style.input, extraClass, {
+    [style.small]: size === 'small',
+    [style.default]: size === 'default',
+  });
+
   return (
-    <div className={style.field}>
-      <label className={style.label}></label>
-      <input
-        className={cn(style.input, {
-          [style.error]: error,
-        })}
-        ref={ref}
-        {...props}
-      />
-    </div>
+    <input type={type} className={className} autoComplete='off' {...props} />
   );
-});
+};
 
 export default Input;

@@ -1,5 +1,6 @@
 .main {
-    display: grid;
     max-width: 1240px;
-    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    display: flex;
+
 }

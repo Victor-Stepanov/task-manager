@@ -39,14 +39,14 @@ export const RegisterPage = () => {
         </div>
         <div className='pb-12px'>
           <Input
-            type='text'
+            type='password'
             placeholder='password'
             onChange={handleChange}
             value={values.name}
             name='password'
           />
         </div>
-        <Button className='text text_type_main-default'>
+        <Button appearance={'primary'} extraClass='text text_type_main-default'>
           Зарегистрироваться
         </Button>
       </form>

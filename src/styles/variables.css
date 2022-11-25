@@ -1,11 +1,12 @@
 :root {
-  --font-family: 'Ubuntu', sans-serif;
+  --font-family: -apple-system, 'Ubuntu', sans-serif;
 
   --colors-interface-dark-blue: #112d4e;
   --colors-interface-blue: #3f72af;
-  --colors-interface-soft: #dbe2ef;
+  --colors-interface-soft: #f4f6f8;
   --colors-interface-white: #f4f6f8;
   --colors-interface-grey: #4f4f4f;
+  --colors-interface-black: #000;
 
   --backround: var(--colors-interface-white);
 
@@ -14,20 +15,19 @@
 
 .text {
   margin: 0;
-  font-weight: 700;
-  font-style: normal;
-  color: var(--colors-interface-grey);
 }
 
 .text_type_main-small {
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.15px;
 }
 
 .text_type_main-default {
   font-size: 16px;
   line-height: 19px;
+  font-weight: 500;
+  color: var(--colors-interface-black);
 }
 
 .text_type_main-medium {
@@ -47,6 +47,15 @@
   color: var(--colors-interface-dark-blue);
 }
 
+.text_type_title-default {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  color: var(--colors-interface-black);
+}
+
 .pt-12px {
   padding-top: 12px;
 }
@@ -60,6 +69,10 @@
 
 .pr-12px {
   padding-right: 12px;
+}
+
+.mr-12px {
+  margin-right: 12px;
 }
 
 .pr-6px {
