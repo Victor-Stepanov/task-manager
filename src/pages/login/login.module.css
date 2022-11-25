@@ -1,0 +1,30 @@
+.container {
+  max-width: 410px;
+  padding: 10px;
+  margin: 75px auto 0 auto;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: var(--colors-interface-white);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.form {
+  max-width: 300px;
+  width: 100%;
+ 
+}
+
+.link {
+  text-decoration: none;
+  color: var(--colors-interface-dark-blue);
+ 
+}
+
+.link:hover {
+  opacity: 0.6;
+
+}

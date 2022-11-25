@@ -1,0 +1,80 @@
+:root {
+  --font-family: -apple-system, 'Ubuntu', sans-serif;
+
+  --colors-interface-dark-blue: #112d4e;
+  --colors-interface-blue: #3f72af;
+  --colors-interface-soft: #f4f6f8;
+  --colors-interface-white: #f4f6f8;
+  --colors-interface-grey: #4f4f4f;
+  --colors-interface-black: #000;
+
+  --backround: var(--colors-interface-white);
+
+  --common-border-radius: 5px;
+}
+
+.text {
+  margin: 0;
+}
+
+.text_type_main-small {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.15px;
+}
+
+.text_type_main-default {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 500;
+  color: var(--colors-interface-black);
+}
+
+.text_type_main-medium {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.text_type_main-large {
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.text_type_main-extra-large {
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 400;
+  color: var(--colors-interface-dark-blue);
+}
+
+.text_type_title-default {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  color: var(--colors-interface-black);
+}
+
+.pt-12px {
+  padding-top: 12px;
+}
+
+.pl-12px {
+  padding-left: 12px;
+}
+.pb-12px {
+  padding-bottom: 12px;
+}
+
+.pr-12px {
+  padding-right: 12px;
+}
+
+.mr-12px {
+  margin-right: 12px;
+}
+
+.pr-6px {
+  padding-right: 6px;
+}

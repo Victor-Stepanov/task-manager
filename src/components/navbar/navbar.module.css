@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  min-height: 450px;
+  height: 100%;
+  background-color: var(--colors-interface-soft);
+  border-right: 1px solid #f1f1f1;
+  padding: 60px 20px;
+}
+
+.listBox {
+  display: flex;
+  justify-content: center;
+}
+
+.listTodo {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.addList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem {
+  max-width: 200px;
+  max-height: 40px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.listItem:hover {
+  opacity: 0.2;
+}
+.active {
+  background: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  border: none;
+}
