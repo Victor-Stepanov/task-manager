@@ -5,6 +5,20 @@
   width: 100%;
   padding: 60px 0 0 60px;
 }
+
+.hiddenTitle {
+  margin: 100px auto 0 auto;
+  padding: 0;
+  max-width: 400px;
+  width: 100%;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #c9d1d3;
+}
+
 .title {
   max-width: 200px;
   padding: 0;
@@ -19,24 +33,4 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-}
-
-.listItem {
-  display: flex;
-  width: 100%;
-  padding: 10px;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 5px;
-  border: 1px solid #4dd599;
-}
-
-.inputTaskLabel {
-}
-.inputTaskCheckbox {
-  box-sizing: border-box;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #4dd599;
 }

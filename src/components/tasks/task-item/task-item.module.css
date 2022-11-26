@@ -1,0 +1,26 @@
+.listItem {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #4dd599;
+}
+
+.inputTaskCheckbox {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #4dd599;
+}
+
+.listBtn{
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  background-color: transparent;
+}

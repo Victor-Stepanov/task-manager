@@ -13,7 +13,8 @@ const TaskForm = ({ onClose, id }) => {
     name: '',
   });
 
-  const handleAddTask = () => {
+  const handleAddTask = event => {
+    event.preventDefault();
     dispatch(sendTaskData(values));
     onClose();
   };
@@ -34,13 +35,14 @@ const TaskForm = ({ onClose, id }) => {
       />
       <div className={style.buttonForm}>
         <Button
+          type='submit'
           extraClass='mr-12px'
           appearance={'primary'}
           disabled={!values.name}
         >
           Добавить задачу
         </Button>
-        <Button appearance={'ghost'} onClick={handleCloseForm}>
+        <Button appearance={'grey'} onClick={handleCloseForm}>
           Отменить
         </Button>
       </div>

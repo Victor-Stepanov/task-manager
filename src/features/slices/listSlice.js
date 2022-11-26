@@ -54,7 +54,6 @@ export const fetchListData = createAsyncThunk(
 export const deleteListData = createAsyncThunk(
   'list/deleteListData',
   async function (id, { rejectWithValue }) {
-    console.log(id);
     try {
       const responce = await fetch(`${config.baseUrl}/todo/lists/${id}/`, {
         method: 'DELETE',

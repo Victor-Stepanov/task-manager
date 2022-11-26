@@ -56,6 +56,15 @@
   color: var(--colors-interface-black);
 }
 
+.text_type_title-cente {
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #c9d1d3;
+}
+
 .pt-12px {
   padding-top: 12px;
 }

@@ -110,6 +110,32 @@ export const completeTaskData = createAsyncThunk(
   }
 );
 
+export const updateTaskData = createAsyncThunk(
+  'tasks/updateTaskData',
+  async function (form, { rejectWithValue }) {
+    try {
+      const responce = await fetch(`${config.baseUrl}/todo/tasks/${form.id}/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + getCookie('token'),
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!responce.ok) {
+        throw new Error('An error occurred during list create');
+      }
+
+      const data = await responce.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const initialState = {
   tasks: [],
 
@@ -129,6 +155,10 @@ const initialState = {
   completeRequest: false,
   completeSuccess: false,
   completeFailed: false,
+
+  updateRequest: false,
+  updateSuccess: false,
+  updateFailed: false,
 };
 
 const taskSlice = createSlice({
@@ -196,6 +226,21 @@ const taskSlice = createSlice({
       state.completeRequest = false;
       state.completeSuccess = false;
       state.completeFailed = true;
+    });
+    builder.addCase(updateTaskData.pending, state => {
+      state.updateRequest = true;
+      state.updateSuccess = false;
+      state.updateFailed = false;
+    });
+    builder.addCase(updateTaskData.fulfilled, (state, action) => {
+      state.updateRequest = false;
+      state.updateSuccess = true;
+      state.updateFailed = false;
+    });
+    builder.addCase(updateTaskData.rejected, state => {
+      state.updateRequest = false;
+      state.updateSuccess = false;
+      state.updateFailed = true;
     });
   },
 });

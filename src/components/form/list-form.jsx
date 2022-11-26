@@ -40,7 +40,7 @@ const ListForm = ({ onClose }) => {
         >
           Добавить
         </Button>
-        <Button appearance={'ghost'} onClick={handleCloseForm}>
+        <Button appearance={'grey'} onClick={handleCloseForm}>
           Отменить
         </Button>
       </div>
