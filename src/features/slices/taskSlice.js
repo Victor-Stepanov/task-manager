@@ -3,7 +3,7 @@ import { config } from '../../utils/const';
 import { getCookie } from '../../utils/utils';
 
 export const sendTaskData = createAsyncThunk(
-  'tasks/sendTaskData',
+  '@@tasks/sendTaskData',
   async function (form, { rejectWithValue }) {
     try {
       const responce = await fetch(`${config.baseUrl}/todo/tasks/`, {
@@ -28,7 +28,7 @@ export const sendTaskData = createAsyncThunk(
 );
 
 export const fetchTaskData = createAsyncThunk(
-  'tasks/fetchTaskData',
+  '@@tasks/fetchTaskData',
   async function (id, { rejectWithValue }) {
     try {
       const responce = await fetch(
@@ -55,7 +55,7 @@ export const fetchTaskData = createAsyncThunk(
 );
 
 export const deleteTaskData = createAsyncThunk(
-  'tasks/deleteTaskData',
+  '@@tasks/deleteTaskData',
   async function (id, { rejectWithValue }) {
     console.log(id);
     try {
@@ -72,9 +72,6 @@ export const deleteTaskData = createAsyncThunk(
         throw new Error('An error occurred during list create');
       }
 
-      //const data = await responce.json();
-      //console.log(data)
-      //return data;
       return responce;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -83,7 +80,7 @@ export const deleteTaskData = createAsyncThunk(
 );
 
 export const completeTaskData = createAsyncThunk(
-  'tasks/completeTaskData',
+  '@@tasks/completeTaskData',
   async function (id, { rejectWithValue }) {
     try {
       const responce = await fetch(
@@ -111,7 +108,7 @@ export const completeTaskData = createAsyncThunk(
 );
 
 export const updateTaskData = createAsyncThunk(
-  'tasks/updateTaskData',
+  '@@tasks/updateTaskData',
   async function (form, { rejectWithValue }) {
     try {
       const responce = await fetch(`${config.baseUrl}/todo/tasks/${form.id}/`, {
@@ -128,7 +125,6 @@ export const updateTaskData = createAsyncThunk(
       }
 
       const data = await responce.json();
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -162,7 +158,7 @@ const initialState = {
 };
 
 const taskSlice = createSlice({
-  name: 'tasks',
+  name: '@@tasks',
   initialState,
   reducers: undefined,
   extraReducers: builder => {

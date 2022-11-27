@@ -1,25 +1,21 @@
 .header {
-  margin-top: 15px;
   padding: 20px;
   width: 100%;
-  background-color: white;
+  background-color: var(--colors-interface-soft);
   border-radius: 10px;
 }
 
 .menu {
   margin: 0;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
   max-width: 1440px;
   min-width: 1280px;
 }
-
-.menuLink {
-  text-decoration: none;
-  padding: 0;
-  color: var(--colors-interface-grey);
-}
-.menuLink:active {
-  color: var(--colors-interface-white);
+.user {
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--colors-interface-black);
+  border-radius: 15px;
 }

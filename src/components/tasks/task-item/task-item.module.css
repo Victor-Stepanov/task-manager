@@ -5,22 +5,10 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
-  border: 1px solid #4dd599;
+  border: 1px solid var(--colors-interface-black);
 }
 
-.inputTaskCheckbox {
-  box-sizing: border-box;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #4dd599;
-}
-
-.listBtn{
+.listBtn {
   display: flex;
   align-items: center;
-}
-
-.btn {
-  background-color: transparent;
 }

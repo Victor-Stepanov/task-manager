@@ -10,14 +10,14 @@ import Button from '../../../ui/button/button';
 import DeleteIcon from '../../../ui/icons/delete-icon';
 import EditIcon from '../../../ui/icons/edit-icon';
 import SaveIcon from '../../../ui/icons/save-icon';
+import InputCheckbox from '../../../ui/input-checkbox/input-checkbox';
 import Input from '../../../ui/input/input';
 import style from './task-item.module.css';
 
 export const TaskItem = ({ item, listId }) => {
-  //TODO:Сделать кнопку completed, поработать над дизайном, заменить иконку удаления
-
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const { values, handleChange } = useForm({
     name: '',
@@ -33,8 +33,9 @@ export const TaskItem = ({ item, listId }) => {
   const handleCompleteTask = useCallback(
     id => {
       dispatch(completeTaskData(id));
+      setCheck(!check);
     },
-    [dispatch]
+    [dispatch, check]
   );
 
   const handleEditTask = id => {
@@ -46,20 +47,18 @@ export const TaskItem = ({ item, listId }) => {
         todo_list: listId,
       })
     );
-    console.log({
-      ...values,
-      id: id,
-      todo_list: listId,
-    });
   };
 
   return (
     <>
       {item && (
         <li key={item.id} className={style.listItem}>
-          <label className={style.inputTaskLabel}>
-            <input type='radio' className={style.inputTaskCheckbox} />
-          </label>
+          <InputCheckbox
+            id={item.id}
+            type='checkbox'
+            value={check}
+            onClick={() => handleCompleteTask(item.id)}
+          />
           {edit ? (
             <Input
               type='text'
@@ -76,18 +75,18 @@ export const TaskItem = ({ item, listId }) => {
             {edit ? (
               <Button
                 onClick={() => handleEditTask(item.id)}
-                extraClass={style.btn}
+                appearance={'ghost'}
               >
                 <SaveIcon />
               </Button>
             ) : (
-              <Button extraClass={style.btn} onClick={() => setEdit(!edit)}>
+              <Button appearance={'ghost'} onClick={() => setEdit(!edit)}>
                 <EditIcon />
               </Button>
             )}
             <Button
               onClick={() => handleDeleteTask(item.id)}
-              extraClass={style.btn}
+              appearance={'ghost'}
             >
               <DeleteIcon />
             </Button>

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../ui/button/button';
 import ListIcon from '../../ui/icons/list-icon';
+import { getCookie } from '../../utils/utils';
 import { ListForm } from '../form/list-form';
 import Modal from '../modal/modal';
 import { ListItem } from './list-item/list-item';
@@ -11,6 +12,7 @@ import style from './lists.module.css';
 
 export const Lists = () => {
   const { list } = useSelector(store => store.listData);
+  const token = getCookie('token');
   const [modal, setModal] = useState(false);
   const location = useLocation();
 
@@ -39,7 +41,11 @@ export const Lists = () => {
         <h3 className='text text_type_title-default'>Список задач</h3>
       </div>
       <div className='pt-12px pb-12px'>
-        <Button appearance={'zero'} onClick={handleOpenModal}>
+        <Button
+          disabled={token === undefined}
+          appearance={'zero'}
+          onClick={handleOpenModal}
+        >
           <span className='text text_type_main-small'>Создать список</span>
         </Button>
         {modal && (
@@ -49,11 +55,7 @@ export const Lists = () => {
         )}
       </div>
       <ul className={style.listTodo}>
-        {list.length ? (
-          list.map(item => <ListItem key={item.id} item={item} />)
-        ) : (
-          <p>Add item</p>
-        )}
+        {list && list.map(item => <ListItem key={item.id} item={item} />)}
       </ul>
     </section>
   );

@@ -3,9 +3,8 @@ import { config } from '../../utils/const';
 import { getCookie, setCookie } from '../../utils/utils';
 
 export const sendUserData = createAsyncThunk(
-  'user/sendUserData',
+  '@@user/sendUserData',
   async function (form, { rejectWithValue }) {
-    console.log(form);
     try {
       const responce = await fetch(
         `${config.baseUrl}/accounts/authentication/reg/`,
@@ -29,7 +28,7 @@ export const sendUserData = createAsyncThunk(
 );
 
 export const sendLoginData = createAsyncThunk(
-  'user/sendLoginData',
+  '@@user/sendLoginData',
   async function (form, { rejectWithValue }) {
     try {
       const responce = await fetch(
@@ -52,7 +51,7 @@ export const sendLoginData = createAsyncThunk(
 );
 
 export const getUserInfo = createAsyncThunk(
-  'user/getUserInfo',
+  '@@user/getUserInfo',
   async function (_, { rejectWithValue }) {
     try {
       const responce = await fetch(
@@ -93,7 +92,7 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: '@@user',
   initialState,
   reducers: undefined,
   extraReducers: builder => {

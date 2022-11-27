@@ -1,8 +1,6 @@
 :root {
   --font-family: -apple-system, 'Ubuntu', sans-serif;
 
-  --colors-interface-dark-blue: #112d4e;
-  --colors-interface-blue: #3f72af;
   --colors-interface-soft: #f4f6f8;
   --colors-interface-white: #f4f6f8;
   --colors-interface-grey: #4f4f4f;
@@ -82,6 +80,10 @@
 
 .mr-12px {
   margin-right: 12px;
+}
+
+.ml-12px {
+  margin-left: 12px;
 }
 
 .pr-6px {
