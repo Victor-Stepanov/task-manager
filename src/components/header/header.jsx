@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Button from '../../ui/button/button';
-import ProfileIcon from '../../ui/icons/profile-icon';
+import Button from '../../UI/button/button';
+import ProfileIcon from '../../UI/icons/profile-icon';
 import LoginForm from '../form/login-form/login-form';
 import RegisterForm from '../form/register-form/register-form';
 import Modal from '../modal/modal';

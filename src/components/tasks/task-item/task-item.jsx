@@ -6,12 +6,12 @@ import {
   updateTaskData,
 } from '../../../features/slices/taskSlice';
 import useForm from '../../../hooks/useForm';
-import Button from '../../../ui/button/button';
-import DeleteIcon from '../../../ui/icons/delete-icon';
-import EditIcon from '../../../ui/icons/edit-icon';
-import SaveIcon from '../../../ui/icons/save-icon';
-import InputCheckbox from '../../../ui/input-checkbox/input-checkbox';
-import Input from '../../../ui/input/input';
+import Button from '../../../UI/button/button';
+import DeleteIcon from '../../../UI/icons/delete-icon';
+import EditIcon from '../../../UI/icons/edit-icon';
+import SaveIcon from '../../../UI/icons/save-icon';
+import InputCheckbox from '../../../UI/input-checkbox/input-checkbox';
+import Input from '../../../UI/input/input';
 import style from './task-item.module.css';
 
 export const TaskItem = ({ item, listId }) => {

@@ -3,8 +3,8 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { deleteListData } from '../../../features/slices/listSlice';
-import Button from '../../../ui/button/button';
-import DeleteIcon from '../../../ui/icons/delete-icon';
+import Button from '../../../UI/button/button';
+import DeleteIcon from '../../../UI/icons/delete-icon';
 import style from './list-item.module.css';
 
 export const ListItem = ({ item }) => {

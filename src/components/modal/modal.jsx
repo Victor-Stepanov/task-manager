@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import CloseIcon from '../../ui/icons/close-icon';
+import CloseIcon from '../../UI/icons/close-icon';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 import style from './modal.module.css';
 

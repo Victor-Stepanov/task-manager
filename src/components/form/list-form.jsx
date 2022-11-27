@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sendListData } from '../../features/slices/listSlice';
 import useForm from '../../hooks/useForm';
-import Button from '../../ui/button/button';
-import Input from '../../ui/input/input';
+import Button from '../../UI/button/button';
+import Input from '../../UI/input/input';
 import style from './form.module.css';
 
 const ListForm = ({ onClose }) => {

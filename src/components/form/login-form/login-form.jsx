@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sendLoginData } from '../../../features/slices/userSlice';
 import useForm from '../../../hooks/useForm';
-import Button from '../../../ui/button/button';
-import Input from '../../../ui/input/input';
+import Button from '../../../UI/button/button';
+import Input from '../../../UI/input/input';
 import style from './login-form.module.css';
 
 const LoginForm = ({ onClose }) => {
