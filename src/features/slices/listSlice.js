@@ -3,7 +3,7 @@ import { config } from '../../utils/const';
 import { getCookie } from '../../utils/utils';
 
 export const sendListData = createAsyncThunk(
-  'list/sendListData',
+  '@@list/sendListData',
   async function (form, { rejectWithValue }) {
     try {
       const responce = await fetch(`${config.baseUrl}/todo/lists/`, {
@@ -28,7 +28,7 @@ export const sendListData = createAsyncThunk(
 );
 
 export const fetchListData = createAsyncThunk(
-  'list/fetchListData',
+  '@@list/fetchListData',
   async function (_, { rejectWithValue }) {
     try {
       const responce = await fetch(`${config.baseUrl}/todo/lists/`, {
@@ -52,9 +52,8 @@ export const fetchListData = createAsyncThunk(
 );
 
 export const deleteListData = createAsyncThunk(
-  'list/deleteListData',
+  '@@list/deleteListData',
   async function (id, { rejectWithValue }) {
-    console.log(id);
     try {
       const responce = await fetch(`${config.baseUrl}/todo/lists/${id}/`, {
         method: 'DELETE',
@@ -69,10 +68,32 @@ export const deleteListData = createAsyncThunk(
         throw new Error('An error occurred during list create');
       }
 
-      //const data = await responce.json();
-      //console.log(data)
-      //return data;
       return responce;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateListData = createAsyncThunk(
+  '@@list/updateListData',
+  async function (form, { rejectWithValue }) {
+    try {
+      const responce = await fetch(`${config.baseUrl}/todo/lists/${form.id}/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + getCookie('token'),
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!responce.ok) {
+        throw new Error('An error occurred during list create');
+      }
+
+      const data = await responce.json();
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -92,10 +113,14 @@ const initialState = {
   deleteRequest: false,
   deleteSuccess: false,
   deleteFailed: false,
+
+  updateRequest: false,
+  updateSuccess: false,
+  updateFailed: false,
 };
 
 const listSlice = createSlice({
-  name: 'list',
+  name: '@@list',
   initialState,
   reducers: undefined,
   extraReducers: builder => {
@@ -146,6 +171,21 @@ const listSlice = createSlice({
       state.deleteRequest = false;
       state.deleteFailed = true;
       state.deleteSuccess = false;
+    });
+    builder.addCase(updateListData.pending, state => {
+      state.updateRequest = true;
+      state.updateSuccess = false;
+      state.updateFailed = false;
+    });
+    builder.addCase(updateListData.fulfilled, (state, action) => {
+      state.updateRequest = false;
+      state.updateSuccess = true;
+      state.updateFailed = false;
+    });
+    builder.addCase(updateListData.rejected, state => {
+      state.updateRequest = false;
+      state.updateSuccess = false;
+      state.updateFailed = true;
     });
   },
 });

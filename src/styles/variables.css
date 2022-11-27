@@ -1,8 +1,6 @@
 :root {
   --font-family: -apple-system, 'Ubuntu', sans-serif;
 
-  --colors-interface-dark-blue: #112d4e;
-  --colors-interface-blue: #3f72af;
   --colors-interface-soft: #f4f6f8;
   --colors-interface-white: #f4f6f8;
   --colors-interface-grey: #4f4f4f;
@@ -56,6 +54,15 @@
   color: var(--colors-interface-black);
 }
 
+.text_type_title-cente {
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #c9d1d3;
+}
+
 .pt-12px {
   padding-top: 12px;
 }
@@ -73,6 +80,10 @@
 
 .mr-12px {
   margin-right: 12px;
+}
+
+.ml-12px {
+  margin-left: 12px;
 }
 
 .pr-6px {

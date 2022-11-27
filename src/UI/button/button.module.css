@@ -18,11 +18,11 @@
 .primary:hover {
   opacity: 0.6;
 }
-.primary-grey {
+.grey {
   color: #9c9c9c;
   background-color: #f4f6f8;
 }
-.primary-grey:hover {
+.grey:hover {
   opacity: 0.4;
 }
 
@@ -33,6 +33,6 @@
   border: 1px solid black;
 }
 
-.ghost{
+.ghost {
   background-color: transparent;
 }
