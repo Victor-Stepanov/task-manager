@@ -1,0 +1,38 @@
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: all 0.2s;
+  opacity: 1;
+}
+
+.primary {
+  color: var(--colors-interface-white);
+  background-color: #4dd599;
+}
+.primary:hover {
+  opacity: 0.6;
+}
+.grey {
+  color: #9c9c9c;
+  background-color: #f4f6f8;
+}
+.grey:hover {
+  opacity: 0.4;
+}
+
+.zero {
+  background-color: transparent;
+}
+.zero:hover {
+  border: 1px solid black;
+}
+
+.ghost {
+  background-color: transparent;
+}

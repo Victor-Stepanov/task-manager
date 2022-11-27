@@ -1,0 +1,21 @@
+.header {
+  padding: 20px;
+  width: 100%;
+  background-color: var(--colors-interface-soft);
+  border-radius: 10px;
+}
+
+.menu {
+  margin: 0;
+  display: flex;
+  max-width: 1440px;
+  min-width: 1280px;
+}
+.user {
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--colors-interface-black);
+  border-radius: 15px;
+}
